@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rotating Hexagon Physics Simulation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js" integrity="sha512-9JAZpO5z1+kWveSDWZytJZXPQyzcmBw2OK7dydpgM9oanY6pY9np8xCpMgN0iLhUbGXG5VY4SDgq2CMx6ZUlsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="controls" aria-label="Simulation controls">
+        <header class="controls__header">
+          <h1>Rotating Hexagon Simulation</h1>
+          <p>Adjust the parameters to explore elastic collisions within a rotating container.</p>
+        </header>
+        <div class="control-group">
+          <label for="sphereCount">Number of Spheres</label>
+          <input id="sphereCount" type="range" min="1" max="200" value="40" step="1" />
+          <span data-value-for="sphereCount" class="control-value">40</span>
+        </div>
+        <div class="control-group">
+          <label for="sphereSize">Sphere Size (px)</label>
+          <input id="sphereSize" type="range" min="1" max="30" value="10" step="1" />
+          <span data-value-for="sphereSize" class="control-value">10</span>
+        </div>
+        <div class="control-group control-group--inline">
+          <input id="variableMass" type="checkbox" role="switch" aria-checked="false" />
+          <label for="variableMass">Variable Sphere Mass</label>
+        </div>
+        <div class="control-group">
+          <label for="wallRestitution">Wall Bounciness</label>
+          <input id="wallRestitution" type="range" min="0" max="1" value="0.9" step="0.01" />
+          <span data-value-for="wallRestitution" class="control-value">0.90</span>
+        </div>
+        <div class="control-group">
+          <label for="sphereRestitution">Sphere Bounciness</label>
+          <input id="sphereRestitution" type="range" min="0" max="1" value="0.9" step="0.01" />
+          <span data-value-for="sphereRestitution" class="control-value">0.90</span>
+        </div>
+        <div class="control-group">
+          <label for="gravity">Gravity Strength</label>
+          <input id="gravity" type="range" min="0" max="10" value="2" step="0.1" />
+          <span data-value-for="gravity" class="control-value">2.0</span>
+        </div>
+        <div class="control-group">
+          <label for="friction">Friction</label>
+          <input id="friction" type="range" min="0" max="1" value="0.1" step="0.01" />
+          <span data-value-for="friction" class="control-value">0.10</span>
+        </div>
+        <div class="control-group">
+          <label for="airResistance">Air Resistance</label>
+          <input id="airResistance" type="range" min="0" max="1" value="0.05" step="0.01" />
+          <span data-value-for="airResistance" class="control-value">0.05</span>
+        </div>
+        <div class="control-group">
+          <label for="rotationSpeed">Hexagon Rotation Speed</label>
+          <input id="rotationSpeed" type="range" min="-5" max="5" value="1" step="0.1" />
+          <span data-value-for="rotationSpeed" class="control-value">1.0</span>
+        </div>
+        <div class="control-group">
+          <label for="velocityMultiplier">Sphere Initial Velocity Multiplier</label>
+          <input id="velocityMultiplier" type="range" min="0" max="5" value="1.5" step="0.1" />
+          <span data-value-for="velocityMultiplier" class="control-value">1.5</span>
+        </div>
+        <div class="control-group control-group--inline">
+          <input id="enableTrails" type="checkbox" role="switch" aria-checked="false" />
+          <label for="enableTrails">Enable Trails</label>
+        </div>
+        <div class="control-group">
+          <label for="borderThickness">Hexagon Border Thickness (px)</label>
+          <input id="borderThickness" type="range" min="1" max="10" value="2" step="1" />
+          <span data-value-for="borderThickness" class="control-value">2</span>
+        </div>
+        <div class="control-group">
+          <label for="backgroundColor">Background Color</label>
+          <input id="backgroundColor" type="color" value="#101418" />
+        </div>
+        <div class="control-group control-group--buttons">
+          <button id="toggleSimulation" type="button">Pause</button>
+          <button id="resetSimulation" type="button">Reset</button>
+        </div>
+        <div class="control-group">
+          <span id="fpsDisplay" aria-live="polite">FPS: 0</span>
+        </div>
+      </section>
+      <section class="canvas-area">
+        <div id="canvasContainer" aria-label="Simulation canvas"></div>
+      </section>
+    </main>
+  </body>
+</html>
+
